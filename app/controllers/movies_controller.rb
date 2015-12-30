@@ -5,6 +5,12 @@ class MoviesController < ApplicationController
 		@movies = Movie.order(@sort_order)
 	end
 
+	def search_tmdb
+		# hardwire to simulate failure
+		flash[:warning] = "'#{params[:search_terms]}' was not found in TMDb."
+		redirect_to movies_path
+	end
+
 	def show
 		id = params[:id]
 		begin
